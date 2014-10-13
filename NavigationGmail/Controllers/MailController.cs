@@ -52,7 +52,7 @@ namespace NavigationGmail.Controllers
 		public ActionResult Send(int id, Message message)
 		{
 			_Repository.AddMessage(id, message.Text);
-			ModelState.Remove("mail.Message");
+			ModelState.Remove("message.Text");
 			StateContext.Bag.sent = true;
 			return View();
 		}

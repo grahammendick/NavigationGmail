@@ -17,6 +17,14 @@ namespace NavigationGmail.Models
 			_Conversations.AddRange(GenerateConversations("sent"));
 		}
 
+		public IQueryable<Conversation> Conversations
+		{
+			get
+			{
+				return _Conversations.AsQueryable();
+			}
+		}
+
 		private static List<Conversation> GenerateConversations(string folder)
 		{
 			var conversations = new List<Conversation>();
@@ -51,14 +59,6 @@ namespace NavigationGmail.Models
 			return conversations;
 		}
 
-
-		public IQueryable<Conversation> Conversations
-		{
-			get
-			{
-				return _Conversations.AsQueryable();
-			}
-		}
 
 		public void AddMessage(int id, string text)
 		{

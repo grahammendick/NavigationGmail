@@ -97,9 +97,14 @@
   <ItemGroup>
     <Compile Include="App_Start\FluentStateInfoConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\MailController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Conversation.cs" />
+    <Compile Include="Models\MailRepository.cs" />
+    <Compile Include="Models\MailViewModel.cs" />
+    <Compile Include="Models\Message.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -107,6 +112,15 @@
     <Content Include="packages.config" />
     <Content Include="StateInfo.config" />
     <Content Include="App_Browsers\Navigation.browser" />
+    <Content Include="Views\Mail\_Content.cshtml" />
+    <Content Include="Views\Mail\_Conversation.cshtml" />
+    <Content Include="Views\Mail\_List.cshtml" />
+    <Content Include="Views\Mail\_Message.cshtml" />
+    <Content Include="Views\Mail\_Menu.cshtml" />
+    <Content Include="Views\Mail\_Pager.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Mail\Index.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -116,8 +130,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

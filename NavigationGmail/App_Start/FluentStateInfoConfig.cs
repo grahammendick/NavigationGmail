@@ -13,14 +13,15 @@ namespace NavigationGmail
         /// </summary>
         public static void Register()
         {
-            //StateInfoConfig.Fluent
-            //    .Dialog("Thingamabob", new
-            //    {
-            //        Listing = new WebFormsState("listing", "~/Listing.aspx"),
-            //        Details = new MvcState("details", "Thingamabob", "Details")
-            //    }, d => d.Listing)
-            //        .Transition("Select", d => d.Listing, d => d.Details)
-            //    .Build();
-        }
+			StateInfoConfig.Fluent
+				.Dialog("Mail", new
+				{
+					Page = new MvcState("{folder}/{start}/{*id}", "Mail", "Index")
+						.Defaults(new { folder = "inbox", start = 0, id = typeof(int) })
+						.Derived("sent")
+						.TrackCrumbTrail(false)
+				}, d => d.Page)
+				.Build();
+		}
     }
 }

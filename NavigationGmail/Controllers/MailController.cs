@@ -29,9 +29,6 @@ namespace NavigationGmail.Controllers
 		{
 			ViewBag.Title = folder == "inbox" ? "Inbox" : "Sent Mail";
 			model.Conversations = _Repository.Conversations.Where(c => c.Folder == folder);
-			StateContext.Data.Clear();
-			StateContext.Bag.folder = folder;
-			StateContext.Bag.start = start;
 			model.Count = model.Conversations.Count();
 			model.Conversations = model.Conversations.Skip(start).Take(50);
 		}
@@ -41,12 +38,10 @@ namespace NavigationGmail.Controllers
 			ViewBag.Title = model.Conversation.Description;
 			model.Conversation = model.Conversations.FirstOrDefault(c => c.Id == id);
 			var latest = model.Conversation.Messages.Last();
+			latest.Latest = true;
 			StateContext.Data["id" + latest.Id] = "o";
 			foreach (var mail in model.Conversation.Messages)
-			{
 				mail.Open = StateContext.Data["id" + mail.Id] != null;
-				mail.Latest = mail == latest;
-			}
 		}
 
 		public ActionResult Send(int id, Message message)

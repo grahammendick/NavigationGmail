@@ -9,6 +9,7 @@ namespace NavigationGmail.Controllers
     {
 		private MailRepository _Repository = new MailRepository();
 
+		[ActionSelector]
 		public ActionResult Index()
 		{
 			return View();
@@ -44,6 +45,7 @@ namespace NavigationGmail.Controllers
 				mail.Open = StateContext.Data["id" + mail.Id] != null;
 		}
 
+		[ActionSelector]
 		public ActionResult Send(int id, Message message)
 		{
 			_Repository.AddMessage(id, message.Text);

@@ -1,1 +1,15 @@
-﻿
+﻿<div class="page">
+    @if (Model.Count > 0) {
+        <span>@(StateContext.Bag.start + 1) - @(Math.Min(StateContext.Bag.start + 50, Model.Count)) of @Model.Count</span>
+    }
+    @if (StateContext.Bag.start - 50 >= 0) {
+        @Html.RefreshLink("<", new NavigationData { { "start", StateContext.Bag.start - 50 } }, "folder", new { @class = "button" })
+    } else {
+        <a class="button"><</a>
+    }
+    @if (StateContext.Bag.start + 50 < Model.Count) {
+        @Html.RefreshLink(">", new NavigationData { { "start", StateContext.Bag.start + 50 } }, "folder", new { @class = "button" })
+    } else {
+        <a class="button">></a>
+    }
+</div>

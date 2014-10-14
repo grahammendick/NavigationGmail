@@ -1,1 +1,11 @@
-﻿
+﻿@model MailViewModel
+@Html.Partial("_Menu")
+@Ajax.RefreshPanel("folder", "folder,id,sent",
+    @<div class="folder">
+        @if (Model.Conversation == null) {
+            @Html.Partial("_List", Model)
+        } else {
+            @Html.Partial("_Conversation", Model.Conversation)
+        }
+    </div>)
+

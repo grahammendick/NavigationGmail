@@ -1,1 +1,12 @@
-﻿
+﻿@Ajax.RefreshPanel("menu", "folder",
+    @<div class="menu">
+        <h1>Navigation Gmail</h1>
+        <ul>
+            <li class="@(StateContext.Bag.folder == "inbox" ? "selected" : null)">
+                @Html.RefreshLink("Inbox", new NavigationData() { { "folder", "inbox" } })
+            </li>
+            <li class="@(StateContext.Bag.folder == "sent" ? "selected" : null)">
+                @Html.RefreshLink("Sent Mail", new NavigationData() { { "folder", "sent" } })
+            </li>
+        </ul>
+    </div>)

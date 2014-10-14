@@ -1,1 +1,17 @@
-﻿
+﻿@model Conversation
+@Html.RefreshLink("Back to " + (StateContext.Bag.folder == "inbox" ? "Inbox" : "Sent Mail"), null, "folder,start", new { @class = "button" })
+<h2>@Model.Description</h2>
+<ol>
+    @foreach (var mail in Model.Messages) {
+        <li>
+            @Html.Partial("_Mail", mail)
+        </li>
+    }
+    <li>
+        @using (Html.BeginRefreshForm(null, true)) {
+            @Html.TextAreaFor(c => c.Message.Text, new { rows = 7 })
+            <input type="submit" name="action" value="Send" class="button" />
+        }
+    </li>
+</ol>
+

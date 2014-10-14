@@ -1,1 +1,13 @@
-﻿
+﻿@model Message
+@Ajax.RefreshPanel("mail" + Model.Id, "id" + Model.Id,
+    @<div class="@(Model.Open ? "open" : null)">
+        @if (!Model.Latest) {
+            @Html.RefreshLink(Model.From, new NavigationData { { "id" + Model.Id, Model.Open ? "" : "o" } }, true)
+        } else {
+            <a>@Model.From</a>
+        }
+        @if (Model.Open) {
+            <p>@Model.Message</p>
+        }
+    </div>)
+

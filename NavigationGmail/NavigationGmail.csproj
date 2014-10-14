@@ -101,6 +101,7 @@
     <Compile Include="ActionSelectorAttribute.cs" />
     <Compile Include="App_Start\FluentStateInfoConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="ChildParentSyncAttribute.cs" />
     <Compile Include="Controllers\MailController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

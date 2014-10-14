@@ -15,6 +15,7 @@ namespace NavigationGmail.Controllers
 			return View();
 		}
 
+		[ChildParentSync]
 		[ChildActionOnly]
 		public ActionResult _Content(string folder, int? id, int start)
 		{

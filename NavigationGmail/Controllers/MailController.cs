@@ -20,6 +20,7 @@ namespace NavigationGmail.Controllers
 		public ActionResult _Content(string folder, int? id, int start)
 		{
 			var model = new MailViewModel();
+			model.Conversations = _Repository.Conversations.Where(c => c.Folder == folder);
 			if (!id.HasValue)
 				ShowList(model, folder, start);
 			else
@@ -30,15 +31,14 @@ namespace NavigationGmail.Controllers
 		private void ShowList(MailViewModel model, string folder, int start)
 		{
 			ViewBag.Title = folder == "inbox" ? "Inbox" : "Sent Mail";
-			model.Conversations = _Repository.Conversations.Where(c => c.Folder == folder);
 			model.Count = model.Conversations.Count();
 			model.Conversations = model.Conversations.Skip(start).Take(50);
 		}
 
 		private void ShowDetails(MailViewModel model, int id)
 		{
-			ViewBag.Title = model.Conversation.Description;
 			model.Conversation = model.Conversations.FirstOrDefault(c => c.Id == id);
+			ViewBag.Title = model.Conversation.Description;
 			var latest = model.Conversation.Messages.Last();
 			latest.Latest = true;
 			StateContext.Data["id" + latest.Id] = "o";

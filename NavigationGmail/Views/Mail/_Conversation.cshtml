@@ -2,9 +2,9 @@
 @Html.RefreshLink("Back to " + (StateContext.Bag.folder == "inbox" ? "Inbox" : "Sent Mail"), null, "folder,start", new { @class = "button" })
 <h2>@Model.Description</h2>
 <ol>
-    @foreach (var mail in Model.Messages) {
+    @foreach (var message in Model.Messages) {
         <li>
-            @Html.Partial("_Mail", mail)
+            @Html.Partial("_Message", message)
         </li>
     }
     <li>

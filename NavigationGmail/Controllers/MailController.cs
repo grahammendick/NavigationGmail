@@ -40,10 +40,12 @@ namespace NavigationGmail.Controllers
 			model.Conversation = _Repository.Conversations.First(c => c.Id == id);
 			ViewBag.Title = model.Conversation.Description;
 			var latest = model.Conversation.Messages.Last();
-			latest.Latest = true;
 			StateContext.Data["id" + latest.Id] = "o";
-			foreach (var mail in model.Conversation.Messages)
-				mail.Open = StateContext.Data["id" + mail.Id] != null;
+			foreach (var message in model.Conversation.Messages)
+			{
+				message.Open = StateContext.Data["id" + message.Id] != null;
+				message.Latest = message == latest;
+			}
 		}
 
 		[ActionSelector]

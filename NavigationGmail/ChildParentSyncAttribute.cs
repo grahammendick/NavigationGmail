@@ -21,9 +21,7 @@ namespace NavigationGmail
 		public void OnActionExecuted(ActionExecutedContext filterContext)
 		{
 			if (filterContext.IsChildAction)
-			{
 				filterContext.ParentActionViewContext.ViewBag.Title = filterContext.Controller.ViewBag.Title;
-			}
 		}
 	}
 }

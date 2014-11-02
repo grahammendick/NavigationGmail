@@ -7,9 +7,9 @@
                 @foreach (var conversation in Model.Conversations)
                 {
                     <tr>
-                        <td>@Html.RefreshLink(conversation.People + " (" + conversation.Messages.Count + ")", new NavigationData { { "id", conversation.Id } }, "folder,start")</td>
-                        <td>@Html.RefreshLink(conversation.Description, new NavigationData { { "id", conversation.Id } }, "folder,start")</td>
-                        <td>@Html.RefreshLink(conversation.Time, new NavigationData { { "id", conversation.Id } }, "folder,start")</td>
+                        <td>@Html.RefreshLink(conversation.People + " (" + conversation.Messages.Count + ")", new NavigationData { { "id", conversation.Id } }, true)</td>
+                        <td>@Html.RefreshLink(conversation.Description, new NavigationData { { "id", conversation.Id } }, true)</td>
+                        <td>@Html.RefreshLink(conversation.Time, new NavigationData { { "id", conversation.Id } }, true)</td>
                     </tr>
                 }
             </tbody>

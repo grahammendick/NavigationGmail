@@ -8,9 +8,8 @@ namespace NavigationGmail
 	{
 		public override bool IsValidName(ControllerContext controllerContext, string actionName, MethodInfo methodInfo)
 		{
-			var action = controllerContext.Controller.ValueProvider.GetValue("action").AttemptedValue;
-			if (!controllerContext.IsChildAction && action != null)
-				actionName = action;
+			if (!controllerContext.IsChildAction)
+				actionName = controllerContext.Controller.ValueProvider.GetValue("action").AttemptedValue;
 			return StringComparer.OrdinalIgnoreCase.Compare(actionName, methodInfo.Name) == 0;
 		}
 	}
